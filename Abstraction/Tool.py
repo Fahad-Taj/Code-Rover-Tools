@@ -1,14 +1,16 @@
-from abc import ABC, abstractmethod
 import json
+from typing import Callable
+
 from Abstraction.ToolParameter import ToolParameter
 from Abstraction.ToolResult import ToolResult
 from Exceptions.InvalidParameterException import InvalidParameterException
 
-class Tool(ABC):
-    def __init__(self, name: str, description: str, parameters: list[ToolParameter]):
+class Tool:
+    def __init__(self, name: str, description: str, parameters: list[ToolParameter], func: Callable):
         self.name = name
         self.description = description
         self.parameters = parameters
+        self.func = func
 
     def validate_input(self, **kwargs):
         for param in self.parameters:
@@ -29,19 +31,29 @@ class Tool(ABC):
             params_dict_list.append(param.toDict())
 
         json_string = json.dumps(params_dict_list)
-
         tool_dict = {
             "name": self.name,
             "description": self.description,
             "parameters": json_string
         }
-
         return tool_dict
 
-
-    @abstractmethod
     def execute(self, **kwargs) -> ToolResult:
-        pass
+        try:
+            self.validate_input(**kwargs)
+            result = self.executable(**kwargs)
+            return ToolResult(status=True, message="File read successfully", content=str(result), error=None)
+        except InvalidParameterException as e:
+            return ToolResult(status=False, message="Invalid parameters provided", content=None, error=f"{str(e)}")
+        except Exception as e:
+            return ToolResult(status=False, message="An error occurred", content=None, error=f"{str(e)}")
+
+    def executable(self, **kwargs):
+        try:
+            content = self.func(**kwargs)
+            return content
+        except Exception as e:
+            raise Exception(str(e))
 
 
 
