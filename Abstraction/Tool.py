@@ -37,7 +37,7 @@ class Tool:
                 raise InvalidParameterException(f"Parameter {param.name} not given")
         return True
 
-    def toJson(self):
+    def to_json(self):
         """
         Converts description of tool into JSON format
         """
@@ -51,7 +51,7 @@ class Tool:
             "description": self.description,
             "parameters": json_string
         }
-        return tool_dict
+        return str(tool_dict)
 
     def execute(self, **kwargs) -> ToolResult:
         """

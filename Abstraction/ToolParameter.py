@@ -33,7 +33,7 @@ class ToolParameter:
         """
         return [str(key) for key in ToolParameter.allowed_types.keys()]
 
-    def __init__(self, paramName, paramType, paramDescription):
+    def __init__(self, paramName, paramType, paramDescription=""):
         if paramType not in self.allowed_types.keys():
             raise Exception("Invalid parameter type. Invoke the ToolParameter.getTypes() method to get allowed types")
 
@@ -45,7 +45,7 @@ class ToolParameter:
         """
         Converts the tool parameter description into JSON format
         """
-        param_dict = self.toDict()
+        param_dict = self.to_dict()
         json_string = json.dumps(param_dict)
         return json_string
 
@@ -60,7 +60,7 @@ class ToolParameter:
 def main():
     print(ToolParameter.allowedTypes())
     fileName = ToolParameter("fileName", "str", "Relative path of the file")
-    print(fileName.toJson())
+    print(fileName.to_json())
 
 if __name__ == "__main__":
     main()

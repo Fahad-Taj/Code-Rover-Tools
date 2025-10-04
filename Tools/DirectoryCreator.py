@@ -16,10 +16,11 @@ directoryCreator = Tool(
 )
 
 def main():
-    try:
-        print(directoryCreator.execute(dirPath=r"C:\Users\fahad\OneDrive\Documents\CodeRover\CodeRover-An-Agent-by-AI-beats-with-Educasheer\temp\temp2").to_json())
-    except Exception as e:
-        print(str(e))
+    # try:
+    #     print(directoryCreator.execute(dirPath=r"C:\Users\fahad\OneDrive\Documents\CodeRover\CodeRover-An-Agent-by-AI-beats-with-Educasheer\temp\temp2").to_json())
+    # except Exception as e:
+    #     print(str(e))
+    print(directoryCreator.to_json())
 
 if __name__ == "__main__":
     main()

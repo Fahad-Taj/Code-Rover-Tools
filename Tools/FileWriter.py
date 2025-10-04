@@ -29,6 +29,6 @@ def main():
     except Exception as e:
         print(str(e))
 
-    print(fileWriter.toJson())
+    print(fileWriter.to_json())
 if __name__ == "__main__":
     main()
