@@ -67,14 +67,15 @@ class Agent:
                 print(raw_response)
                 parsed_response = self.parse_output(raw_response)
                 # print(f"{type(parsed_response[0])} {type(parsed_response[1])}")
-                # print(f"{parsed_response[0]} {parsed_response[1]}")
+                print(f"{parsed_response[0]} {parsed_response[1]}")
                 if parsed_response[0] == "Quit":
                     break
                 tool_call_result = self.tool_call(parsed_response)
-                # print(f"{tool_call_result.to_json()}")
+                print(f"{tool_call_result.to_json()}")
 
 
 def main():
+    os.environ["BASE_DIR"] = os.getcwd()
     agent = Agent()
     agent.run()
 

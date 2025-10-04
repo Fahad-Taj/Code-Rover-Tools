@@ -1,6 +1,7 @@
 import os
 
-EXCLUDED_FOLDERS = ["node_modules", ".vscode", "venv", "__pycache__", ".git"]
+EXCLUDED_FOLDERS = ["node_modules", ".vscode", ".venv", "__pycache__", ".git"]
+BASE_DIR = os.getenv("BASE_DIR")
 
 def navigate_directory_structure(path):
     files = {}

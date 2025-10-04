@@ -16,10 +16,10 @@ directoryNavigator = Tool(
 )
 
 def main():
-    # try:
-    #     print(directoryNavigator.execute(path=r"C:\Users\fahad\OneDrive\Documents\CodeRover").to_json())
-    # except Exception as e:
-    #     print(str(e))
+    try:
+        print(directoryNavigator.execute(path=r"C:\Users\fahad\OneDrive\Documents\CodeRover").to_json())
+    except Exception as e:
+        print(str(e))
     print(directoryNavigator.to_json())
 
 if __name__ == "__main__":
