@@ -41,7 +41,7 @@ class ToolParameter:
         self.type = paramType
         self.description = paramDescription
 
-    def toJson(self):
+    def to_json(self):
         """
         Converts the tool parameter description into JSON format
         """
@@ -49,7 +49,7 @@ class ToolParameter:
         json_string = json.dumps(param_dict)
         return json_string
 
-    def toDict(self):
+    def to_dict(self):
         """
         Converts the tool parameter description into a Python dictionary
         """

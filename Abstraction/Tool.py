@@ -43,7 +43,7 @@ class Tool:
         """
         params_dict_list = []
         for param in self.parameters:
-            params_dict_list.append(param.toDict())
+            params_dict_list.append(param.to_dict())
 
         json_string = json.dumps(params_dict_list)
         tool_dict = {
@@ -61,7 +61,7 @@ class Tool:
         try:
             self.validate_input(**kwargs)
             result = self.func(**kwargs)
-            return ToolResult(status=True, message="File read successfully", content=str(result), error=None)
+            return ToolResult(status=True, message="Operation completed successfully", content=str(result), error=None)
         except InvalidParameterException as e:
             return ToolResult(status=False, message="Invalid parameters provided", content=None, error=f"{str(e)}")
         except Exception as e:
